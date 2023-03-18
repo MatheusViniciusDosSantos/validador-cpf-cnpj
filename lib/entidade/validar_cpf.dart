@@ -1,4 +1,18 @@
 class ValidarCPF {
+
+  ValidarCPF(){}
+  
+  ValidarCPF.comCPF(String CPF) {
+    ehVazio(CPF);
+    tem14Char(CPF);
+    formatoCorreto(CPF);
+    var digito = calculaPrimeiroDigito(CPF);
+    validaPrimeiroDigito(CPF, digito);
+    List<int> listaNumerosCpfSemDigito = gerarListaNumeros(CPF);
+    var segundoD = calculaSegundoDigito(listaNumerosCpfSemDigito);
+    validaSegundoDigito(CPF, segundoD);
+  }
+
   bool ehVazio(String cpf) {
     if (cpf.isEmpty) throw Exception('CPF não pode ser vazio');
     return true;
